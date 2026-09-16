@@ -111,11 +111,11 @@ Illustrative rates under that config (confirm against LATEST file):
 | Metric | Example rate |
 |--------|----------------|
 | mode3_stable | 100 / 100 |
-| all_loops_mode3 | 95 / 100 |
-| pump_locked (pump amp sync) | 19 / 100 |
-| pump-locked AND energy-locked | 2 / 19 of pump-locked |
+| all_loops_mode3 (FULL ρ gate) | 94 / 100 |
+| pump_locked (pump amp sync, class / mean) | 19 / 100 |
+| energy_sync_locked | 4 / 100 |
 
-**Note:** The illustrative `all_loops_mode3` rate above was measured under the **old dominant-only** bit. After the full ρ gate change, do **not** quote 95/100 as measured under the new gate until a LATEST evidence rebuild.
+**Note:** Rates above are from `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md` on HEAD `65a00ac` (FULL ρ `all_loops`). Do not quote older dominant-only 95/100. `pump_locked` is class/mean lock; min pairwise was not in this aggregate export.
 
 **Scope sentence (use this wording):**
 
