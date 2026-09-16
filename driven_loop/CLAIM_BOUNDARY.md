@@ -112,7 +112,7 @@ Illustrative rates under that config (confirm against LATEST file):
 |--------|----------------|
 | mode3_stable | 100 / 100 |
 | all_loops_mode3 | 95 / 100 |
-| pump_locked (phase) | 19 / 100 |
+| pump_locked (pump amp sync) | 19 / 100 |
 | phase-locked AND energy-locked | 2 / 19 of phase-locked |
 
 **Note:** The illustrative `all_loops_mode3` rate above was measured under the **old dominant-only** bit. After the full ρ gate change, do **not** quote 95/100 as measured under the new gate until a LATEST evidence rebuild.
