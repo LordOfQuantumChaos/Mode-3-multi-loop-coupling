@@ -2031,7 +2031,12 @@ def _simulate(
             })
         lattice_stats = {
             "per_loop": loop_rows,
-            "all_loops_mode3_stable": all(r["dominant_mode"] == config.pump_mode for r in loop_rows),
+            # Full gate: dominant pump mode AND per-loop pump variance gate
+            # (r["stable"]). Dominant-only was over-claiming vs mode3_stable.
+            "all_loops_mode3_stable": all(
+                r["dominant_mode"] == config.pump_mode and bool(r["stable"])
+                for r in loop_rows
+            ),
             **analyze_lattice_sync(pump_tail_arr),
         }
         if per_loop_stored_history is not None and per_loop_stored_history[0]:

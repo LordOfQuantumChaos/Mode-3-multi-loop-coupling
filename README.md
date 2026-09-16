@@ -127,7 +127,10 @@ print(lattice_3x3_default_overrides()["loop_lattice_coupling"])  # 0.006
 from driven_loop.stress import run_seed
 
 stats = run_seed(0, lattice=True, frames=200, rows=3, cols=3, coupling=0.006)
+# Quote fingerprint with rates. all_loops needs dominant+ρ, not dominant alone.
+# sync_class is mean pairwise; also print min_pairwise_corr (class lock ≠ tight lock).
 print(stats.get("mode3_stable"), stats.get("all_loops_mode3_stable"))
+print(stats.get("sync_class"), stats.get("mean_pairwise_corr"), stats.get("min_pairwise_corr"))
 ```
 
 ---
