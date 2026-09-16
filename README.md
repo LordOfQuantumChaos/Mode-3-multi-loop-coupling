@@ -167,7 +167,8 @@ Confirm numbers against USPTO Patent Center.
 2. [`docs/01_WHAT_IT_DOES.md`](docs/01_WHAT_IT_DOES.md)  
 3. [`docs/03_HOW_IT_WORKS.md`](docs/03_HOW_IT_WORKS.md)  
 4. [`docs/06_DROP_IN_AND_RUN.md`](docs/06_DROP_IN_AND_RUN.md)  
-5. [`docs/STANDALONE_CHANGES.md`](docs/STANDALONE_CHANGES.md) · [`REPO_MAP.md`](REPO_MAP.md)
+5. [`docs/JUDGE_DEMO.md`](docs/JUDGE_DEMO.md) — outsider / challenge one-shot path
+6. [`docs/STANDALONE_CHANGES.md`](docs/STANDALONE_CHANGES.md) · [`REPO_MAP.md`](REPO_MAP.md)
 
 ---
 
