@@ -12,6 +12,8 @@ Do **not** headline `fully_locked`. Independent metrics below; do not quote olde
 | git_sha | `65a00ac` |
 | lattice | rows=3, cols=3, k=0.006 |
 | loop_lattice_velocity_only | True |
+| loop_lattice_velocity_frac | 0.15 |
+| loop_lattice_bond_width | 0.4 |
 | frames | 6000 |
 | pump_mode | 3 |
 | rho (pump_stability_rel_var) | 0.055 |
@@ -50,3 +52,5 @@ Updated: 2026-09-16 20:40:06 UTC.
 ## Sync mean vs min
 
 This campaign API did **not** populate `min_pairwise_corr` in the aggregate table. Do not treat `pump_locked` (mean≥0.85) as tight lattice lock without per-seed min pairwise. Prefer quoting mode3 / all_loops (FULL ρ) with fingerprint; report pump_locked as class lock only.
+
+Of the 4 energy_sync locks in this run, **2** also met pump_locked (intersection).
