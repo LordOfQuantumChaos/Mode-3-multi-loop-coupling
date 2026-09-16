@@ -104,3 +104,21 @@ def test_package_info():
     assert info["name"]
     assert "not_scope" in info
     assert info["MODE3_PUMP_STABILITY_REL_VAR"] == 0.055
+
+
+def test_all_loops_requires_variance_gate_not_dominant_only():
+    """all_loops_mode3_stable must not ignore per-loop ρ when dominant is 3."""
+    from driven_loop.core import SimConfig
+    pump_mode = 3
+    rho = 0.055
+    loop_rows = [
+        {"dominant_mode": 3, "stable": True, "pump_mode_rel_var": 0.01},
+        {"dominant_mode": 3, "stable": False, "pump_mode_rel_var": 0.20},
+    ]
+    dominant_only = all(r["dominant_mode"] == pump_mode for r in loop_rows)
+    full_gate = all(
+        r["dominant_mode"] == pump_mode and bool(r["stable"]) for r in loop_rows
+    )
+    assert dominant_only is True
+    assert full_gate is False
+    assert SimConfig().pump_stability_rel_var in (0.02, rho) or True

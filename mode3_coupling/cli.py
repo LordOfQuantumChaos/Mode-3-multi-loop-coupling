@@ -98,15 +98,20 @@ def cmd_demo() -> int:
     print("   Gate rho:", crit["gate_rho"])
 
     ov = lattice_3x3_default_overrides()
-    print("\n5) Production 3×3 defaults (subset):")
-    for k in (
-        "loop_lattice_coupling",
-        "loop_lattice_velocity_only",
-        "pump_mode",
-        "frames",
-        "pump_stability_rel_var",
-    ):
-        print(f"   {k}: {ov.get(k)}")
+    print("\n5) Production 3×3 fingerprint (quote with any rates):")
+    fingerprint = {
+        "rows×cols": f"{ov.get('loop_lattice_rows', 3)}×{ov.get('loop_lattice_cols', 3)}",
+        "k (loop_lattice_coupling)": ov.get("loop_lattice_coupling"),
+        "loop_lattice_velocity_only": ov.get("loop_lattice_velocity_only", True),
+        "loop_lattice_velocity_frac": ov.get("loop_lattice_velocity_frac", 0.15),
+        "loop_lattice_bond_width": ov.get("loop_lattice_bond_width", 0.4),
+        "frames": ov.get("frames"),
+        "pump_mode": ov.get("pump_mode", 3),
+        "ρ (pump_stability_rel_var)": ov.get("pump_stability_rel_var", 0.055),
+        "extras (pulse/PAC/GR/gyro/PLL)": "off",
+    }
+    for k, v in fingerprint.items():
+        print(f"   {k}: {v}")
 
     # Optional short multi-loop integrate
     if simulation_available():
@@ -131,7 +136,19 @@ def cmd_demo() -> int:
                 },
             )
             if isinstance(stats, dict):
-                print("   Short run completed. Sample keys:", list(stats.keys())[:8])
+                print("   Short run (NOT production-length rates):")
+                for k in (
+                    "mode3_stable",
+                    "all_loops_mode3_stable",
+                    "sync_class",
+                    "mean_pairwise_corr",
+                    "min_pairwise_corr",
+                    "energy_sync_class",
+                    "dominant_mode",
+                    "equilibrium_type",
+                ):
+                    if k in stats:
+                        print(f"     {k}: {stats[k]}")
             else:
                 print("   Short run completed:", type(stats))
         except Exception as e:
@@ -168,16 +185,31 @@ def cmd_smoke() -> int:
                 "pump_stability_rel_var": ov.get("pump_stability_rel_var", 0.055),
             },
         )
-        print("Smoke run_seed completed.")
+        print("Smoke run_seed completed (short frames — not a production claim).")
+        print("Fingerprint: 3×3 k=%s velocity_only=%s bond_width=%s ρ=%s extras=off"
+              % (
+                  ov.get("loop_lattice_coupling", 0.006),
+                  ov.get("loop_lattice_velocity_only", True),
+                  ov.get("loop_lattice_bond_width", 0.4),
+                  ov.get("pump_stability_rel_var", 0.055),
+              ))
         if isinstance(stats, dict):
             for k in (
                 "mode3_stable",
                 "all_loops_mode3_stable",
+                "sync_class",
+                "mean_pairwise_corr",
+                "min_pairwise_corr",
                 "dominant_mode",
                 "equilibrium_type",
             ):
                 if k in stats:
                     print(f"  {k}: {stats[k]}")
+            m3 = stats.get("mode3_stable")
+            al = stats.get("all_loops_mode3_stable")
+            if m3 is False and al is True:
+                print("  note: lattice all_loops uses per-loop dominant+ρ; "
+                      "mode3_stable also needs global stable_oscillation.")
         return 0
     except Exception:
         traceback.print_exc()

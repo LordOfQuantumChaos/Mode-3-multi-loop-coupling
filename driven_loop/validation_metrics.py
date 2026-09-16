@@ -131,6 +131,11 @@ def pump_lock_definition() -> Dict[str, Any]:
             "Headline '19 pump locked' uses pump_locked (sync_class only), not fully_locked. "
             "mode3_stable is reported separately (100/100 on production strength)."
         ),
+        "tight_lattice_lock": (
+            "Class lock (sync_class=='locked') is mean_pairwise_corr >= 0.85 on "
+            "pump-amplitude tails. Also report min_pairwise_corr. Mean >= 0.85 with "
+            "a weak min (e.g. 0.24–0.36) is NOT tight lattice lock."
+        ),
     }
 
 

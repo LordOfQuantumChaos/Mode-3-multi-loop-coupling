@@ -1,7 +1,7 @@
 # Claim Boundary — Mode-3 Multi-Loop Coupling
 
 **Package:** Mode-3 Multi-Loop Coupling (GitHub / upload hub)  
-**Updated:** 2026-07-29  
+**Updated:** 2026-09-16  
 **Owner:** Joe Louis Vanderpool · Quantum Chaos Technologies, L.L.C.
 
 **PATENT PENDING** — U.S. Provisional Application **64/119,833**  
@@ -77,10 +77,19 @@ It is suitable for evaluation, research, technical review, and reproducible simu
 | Metric | Meaning (package language) |
 |--------|----------------------------|
 | **mode3_stable** | Stable oscillation-like behavior, dominant spatial mode matches pump mode **3**, and pump-amplitude relative variance ≤ production gate **ρ = 0.055** (unless a different gate is stated). |
-| **all_loops_mode3** | Every loop on the lattice meets mode3_stable (when reported). |
-| **pump_locked / phase sync** | Agreement of pump-amplitude time series across loops — **not** the same as mode-3. |
+| **all_loops_mode3** | Every loop has dominant pump mode **and** per-loop pump variance under ρ (same gate as mode3_stable). Not sync lock. |
+| **pump_locked / phase sync** | Mean pairwise pump-amplitude agreement ≥ 0.85 (also report **min**). Class lock ≠ tight lattice lock. Not mode-3. |
 | **energy sync** | Agreement of stored-energy time series — **not** the same as phase lock. |
 | **energy balance** | Ledger residual near zero on the analysis window — integrator/accounting health, **not** a sync score. |
+
+
+### Sync class vs tight lattice lock
+
+`pump_locked` / `sync_class == "locked"` means **mean** pairwise Pearson correlation of
+per-loop **pump-mode amplitude** tails ≥ **0.85**. Always also report **`min_pairwise_corr`**.
+
+Mean ≥ 0.85 with a weak min (for example 0.24–0.36) is a **class bit**, not tight lattice lock.
+Do not promote a config on `pump_locked` count alone.
 
 Full math/force detail: `MATHEMATICAL_FORCE_SPECIFICATION.md`.
 
