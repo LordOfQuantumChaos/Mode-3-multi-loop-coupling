@@ -77,8 +77,8 @@ It is suitable for evaluation, research, technical review, and reproducible simu
 | Metric | Meaning (package language) |
 |--------|----------------------------|
 | **mode3_stable** | Stable oscillation-like behavior, dominant spatial mode matches pump mode **3**, and pump-amplitude relative variance ≤ production gate **ρ = 0.055** (unless a different gate is stated). |
-| **all_loops_mode3** | Every loop has dominant pump mode **and** per-loop pump variance under ρ (same gate as mode3_stable). Not sync lock. |
-| **pump_locked / phase sync** | Mean pairwise pump-amplitude agreement ≥ 0.85 (also report **min**). Class lock ≠ tight lattice lock. Not mode-3. |
+| **all_loops_mode3** | Every loop has dominant pump mode **and** per-loop pump variance under ρ (same **ρ variance** gate used by mode3_stable — not the full global `mode3_stable` / stable_oscillation predicate). Not sync lock. |
+| **pump_locked / pump amp sync** | Mean pairwise pump-amplitude (envelope) Pearson ≥ 0.85 (also report **min**). Class lock ≠ tight lattice lock. Not mode-3; not geometric phase. |
 | **energy sync** | Agreement of stored-energy time series — **not** the same as phase lock. |
 | **energy balance** | Ledger residual near zero on the analysis window — integrator/accounting health, **not** a sync score. |
 
@@ -114,6 +114,8 @@ Illustrative rates under that config (confirm against LATEST file):
 | all_loops_mode3 | 95 / 100 |
 | pump_locked (phase) | 19 / 100 |
 | phase-locked AND energy-locked | 2 / 19 of phase-locked |
+
+**Note:** The illustrative `all_loops_mode3` rate above was measured under the **old dominant-only** bit. After the full ρ gate change, do **not** quote 95/100 as measured under the new gate until a LATEST evidence rebuild.
 
 **Scope sentence (use this wording):**
 
