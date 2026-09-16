@@ -94,7 +94,8 @@ def describe_mode3_criteria() -> Dict[str, Any]:
         "all_loops_mode3_stable": (
             "Every lattice loop has dominant_mode == pump_mode and per-loop "
             "pump-amplitude relative variance under the configured ρ gate "
-            "(same variance gate as mode3_stable). Not a sync-lock score."
+            "(same ρ variance gate used by mode3_stable — not the full global "
+            "mode3_stable / stable_oscillation predicate). Not a sync-lock score."
         ),
         "pump_sync_lock": "Separate phase/pump-amplitude correlation metric — not mode-3.",
         "energy_sync": "Separate energy time-series agreement — not phase lock.",
