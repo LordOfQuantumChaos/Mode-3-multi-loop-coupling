@@ -20,13 +20,14 @@ pip install -e ".[dev]"
 | Step | Command | Expect |
 |------|---------|--------|
 | 1 | `python -m mode3_coupling demo` | Ends with `=== Demo OK ===`. Prints production **fingerprint** and short-run metrics. |
-| 2 | `python -m mode3_coupling smoke` | Short 3×3 integrate; prints fingerprint + `mode3_stable` / `all_loops_mode3_stable` / sync mean (and min when present). |
+| 2 | `python -m mode3_coupling smoke` | Short 3×3 integrate; prints fingerprint + `mode3_stable` / `all_loops_mode3_stable` / sync mean **and min** pairwise when the run succeeds. |
 | 3 | `python -m mode3_coupling test` | Unit tests pass. |
 
 ## How to read the output
 
-- **Fingerprint** (3×3, k=0.006, velocity_only, bond_width, frames, ρ, extras off) must be quoted with any rates.
+- **Fingerprint** (3×3, k=0.006, velocity_only, velocity_frac=0.15, bond_width, frames, ρ, extras off) must be quoted with any rates.
 - **Short demo/smoke runs are not production-length rates.** Do not treat them as the multi-seed campaign.
+- Short smoke may show `mode3_stable=False` — **expected at short frames**, not a failed package.
 - **`all_loops_mode3_stable`** requires dominant pump mode **and** per-loop ρ / `stable` — not dominant-only.
 - **`pump_locked` / sync class** is mean pairwise pump-amplitude correlation ≥ 0.85. Always also look at **min** pairwise. Class lock ≠ tight lattice lock.
 - Patent status: **pending** provisional App. **64/119,833** — not “patented.”
