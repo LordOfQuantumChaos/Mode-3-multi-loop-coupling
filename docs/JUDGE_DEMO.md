@@ -25,7 +25,7 @@ pip install -e ".[dev]"
 
 ## How to read the output
 
-- **Fingerprint** (3×3, k=0.006, velocity_only, velocity_frac=0.15, bond_width, frames, ρ, extras off) must be quoted with any rates.
+- **Fingerprint** must be quoted with any rates: 3×3, k=0.006, velocity_only=True, velocity_frac=0.15, bond_width=0.4, phase_jitter=0.02, **initial_mode_seed=0**, frames, ρ=0.055, pump_mode=3, extras off.
 - **Short demo/smoke runs are not production-length rates.** Do not treat them as the multi-seed campaign.
 - Short smoke may show `mode3_stable=False` — **expected at short frames**, not a failed package.
 - **`all_loops_mode3_stable`** requires dominant pump mode **and** per-loop ρ / `stable` — not dominant-only.
@@ -36,10 +36,27 @@ pip install -e ".[dev]"
 
 See [`CLAIM_BOUNDARY.md`](../CLAIM_BOUNDARY.md). Prefer under-claiming.
 
-## Multi-seed evidence
+## Multi-seed evidence (do not mix columns)
 
-When present, see `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md`. Do not cite older `all_loops` rates measured under a dominant-only bit after the honesty gate change.
+### Blank-IC production (canonical)
 
-## Labeled IC-seeded evidence (optional)
+`evidence/LATEST_CANONICAL_3X3_INTRINSIC.md` — `initial_mode_seed=0`, velocity_only, FULL ρ gate:
 
-A separate labeled campaign with `initial_mode_seed=0.02` reports higher all_loops/sync rates — see [`evidence/LATEST_LABELED_initial_mode_seed_0p02.md`](../evidence/LATEST_LABELED_initial_mode_seed_0p02.md). **Under-claim:** IC-shared pump-mode shape, not blank-IC coupling discovery. Production demo/fingerprint remains `initial_mode_seed=0`.
+| Metric | Rate |
+|--------|------|
+| mode3_stable | 100 / 100 |
+| all_loops_mode3 (FULL ρ) | **94 / 100** |
+| pump_locked (class / mean) | 19 / 100 |
+| energy_sync_locked | 4 / 100 |
+
+Miss seeds for all_loops: {8, 17, 55, 57, 69, 89}. Do not cite older dominant-only 95/100.
+
+### Labeled IC-seeded (optional, separate)
+
+`evidence/LATEST_LABELED_initial_mode_seed_0p02.md` — `initial_mode_seed=0.02` via extra only:
+
+| Metric | Rate |
+|--------|------|
+| mode3 / all_loops / pump / energy_sync | 100 / 100 each |
+
+**Under-claim (hard):** IC-shared pump-mode shape bias — **not** blank-IC coupling discovery. Do **not** quote these 100/100 as production blank-IC rates. Production demo/fingerprint remains `initial_mode_seed=0`.
