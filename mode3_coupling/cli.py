@@ -105,6 +105,8 @@ def cmd_demo() -> int:
         "loop_lattice_velocity_only": ov.get("loop_lattice_velocity_only", True),
         "loop_lattice_velocity_frac": ov.get("loop_lattice_velocity_frac", 0.15),
         "loop_lattice_bond_width": ov.get("loop_lattice_bond_width", 0.4),
+        "loop_lattice_phase_jitter": ov.get("loop_lattice_phase_jitter", 0.02),
+        "initial_mode_seed": ov.get("initial_mode_seed", 0.0),  # prod blank-IC = 0
         "frames": ov.get("frames"),
         "pump_mode": ov.get("pump_mode", 3),
         "ρ (pump_stability_rel_var)": ov.get("pump_stability_rel_var", 0.055),
@@ -186,11 +188,14 @@ def cmd_smoke() -> int:
             },
         )
         print("Smoke run_seed completed (short frames — not a production claim).")
-        print("Fingerprint: 3×3 k=%s velocity_only=%s bond_width=%s ρ=%s extras=off"
+        print("Fingerprint: 3×3 k=%s velocity_only=%s vf=%s bond=%s jitter=%s seed=%s ρ=%s extras=off"
               % (
                   ov.get("loop_lattice_coupling", 0.006),
                   ov.get("loop_lattice_velocity_only", True),
+                  ov.get("loop_lattice_velocity_frac", 0.15),
                   ov.get("loop_lattice_bond_width", 0.4),
+                  ov.get("loop_lattice_phase_jitter", 0.02),
+                  ov.get("initial_mode_seed", 0.0),
                   ov.get("pump_stability_rel_var", 0.055),
               ))
         if isinstance(stats, dict):
