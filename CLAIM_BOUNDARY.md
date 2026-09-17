@@ -123,6 +123,19 @@ Illustrative rates under that config (confirm against LATEST file):
 
 Phase–energy decoupling write-up: `PHASE_ENERGY_DECOUPLING.md`.
 
+### Labeled IC-seeded snapshot (optional — not production)
+
+See `evidence/LATEST_LABELED_initial_mode_seed_0p02.md` (`initial_mode_seed=0.02` via extra only; INTRINSIC / prod default stays **0**).
+
+| Metric | Labeled rate |
+|--------|----------------|
+| mode3_stable | 100 / 100 |
+| all_loops_mode3 (FULL ρ) | 100 / 100 |
+| pump_locked | 100 / 100 |
+| energy_sync_locked | 100 / 100 |
+
+**Under-claim (hard):** IC-shared pump-mode shape bias — **not** blank-IC coupling discovery. Do not quote these 100/100 figures as blank-IC / production rates.
+
 ---
 
 ## 7. Config fingerprint (always publish with rates)
@@ -133,6 +146,10 @@ When quoting results, include at least:
 rows, cols
 loop_lattice_coupling (k)
 loop_lattice_velocity_only (true/false)
+loop_lattice_velocity_frac
+loop_lattice_bond_width
+loop_lattice_phase_jitter
+initial_mode_seed          # production blank-IC = 0
 frames
 seed list or seed count
 pump_mode
@@ -182,7 +199,8 @@ For commercial licensing or written permission beyond evaluation use.
 | `PATENT_FILING_RECORD.md` | Application numbers |
 | `docs/02_WHAT_IT_DOES_NOT.md` | Plain-language limits |
 | `docs/08_PATENT_NOTICE.md` | Patent wording |
-| `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md` | Multi-seed rates |
+| `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md` | Blank-IC multi-seed rates |
+| `evidence/LATEST_LABELED_initial_mode_seed_0p02.md` | Labeled IC-seeded rates (under-claim) |
 | `CORE_CODE.md` | Source file map |
 | `Mode3_Hub.html` | Browser information hub |
 

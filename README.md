@@ -28,6 +28,9 @@ python -m mode3_coupling demo
 
 **Expected:** 3x3 topology (12 bonds), action-reaction check, short lattice integrate, ends with `=== Demo OK ===`.
 
+**Fingerprint (quote with rates):** 3×3, k=0.006, velocity_only, vf=0.15, bond=0.4, jitter=0.02, **initial_mode_seed=0**, ρ=0.055, extras off. Blank-IC LATEST all_loops **94/100** (FULL ρ); labeled `initial_mode_seed_0p02` is separate under IC-bias under-claim — see [`CLAIM_BOUNDARY.md`](CLAIM_BOUNDARY.md) / [`docs/JUDGE_DEMO.md`](docs/JUDGE_DEMO.md).
+
+
 | Command | Result |
 |---------|--------|
 | `python -m mode3_coupling demo` | Minimal outsider demo |
