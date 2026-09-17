@@ -97,7 +97,7 @@ Full math/force detail: `MATHEMATICAL_FORCE_SPECIFICATION.md`.
 
 ## 6. Canonical evidence snapshot (when present)
 
-See `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md`.
+See `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md` (blank-IC production). A **labeled** IC-seeded run lives at `evidence/LATEST_LABELED_initial_mode_seed_0p02.md` — IC bias, not blank-IC coupling sync; do not replace blank-IC rates with those 100/100 figures.
 
 Example published campaign shape (do not treat as universal):
 
