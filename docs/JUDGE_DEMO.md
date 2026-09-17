@@ -4,6 +4,8 @@
 **Purpose:** What an outsider / challenge judge should run.  
 **Not:** Production multi-seed rates, hardware claims, or an issued patent.
 
+One-page pitch (orchestration + evidence tables): [`JUDGE_PITCH.md`](JUDGE_PITCH.md).
+
 ## Setup
 
 ```bash
