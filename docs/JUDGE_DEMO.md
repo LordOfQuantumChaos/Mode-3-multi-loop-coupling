@@ -39,3 +39,7 @@ See [`CLAIM_BOUNDARY.md`](../CLAIM_BOUNDARY.md). Prefer under-claiming.
 ## Multi-seed evidence
 
 When present, see `evidence/LATEST_CANONICAL_3X3_INTRINSIC.md`. Do not cite older `all_loops` rates measured under a dominant-only bit after the honesty gate change.
+
+## Labeled IC-seeded evidence (optional)
+
+A separate labeled campaign with `initial_mode_seed=0.02` reports higher all_loops/sync rates — see [`evidence/LATEST_LABELED_initial_mode_seed_0p02.md`](../evidence/LATEST_LABELED_initial_mode_seed_0p02.md). **Under-claim:** IC-shared pump-mode shape, not blank-IC coupling discovery. Production demo/fingerprint remains `initial_mode_seed=0`.
